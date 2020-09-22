@@ -39,3 +39,64 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+.myHead {
+  height: 70px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  .headLeft {
+    font-size: 30px;
+    font-weight: bolder;
+  }
+  .headRight {
+    img {
+      width: 20px;
+      margin-right: 3px;
+    }
+  }
+}
+
+.myContent {
+  padding: 20px;
+  .myTitle {
+    font-size: 20px;
+    font-weight: bolder;
+    
+  }
+  .arow {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+  }
+  .cardOne {
+    width: 28%;
+    border: none;
+    .cardTitle {
+      font-size: 15px;
+      font-weight: bolder;
+      padding: 15px 0;
+    }
+    .addBtn {
+      font-size: 10px;
+      width: 70%;
+      padding: 2px 5px;
+      float: left;
+    }
+    .money {
+      font-size: 13px;
+      font-weight: bolder;
+      width: 50%;
+      float: left;
+    }
+    .myBottom {
+      width: 100%;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+}
