@@ -9,7 +9,7 @@ export default class Item extends Component {
         <div className="cardTitle">{this.props.title}</div>
         <img src={imgUrl} alt="svgImg" className="card-img-top" />
         <div className="card-body myBottom">
-          <span className="money">￥{this.props.money}</span>
+          <span className="money">{this.props.money}</span>
           <button
             className="btn btn-primary addBtn"
             onClick={this.props.cartAdd}

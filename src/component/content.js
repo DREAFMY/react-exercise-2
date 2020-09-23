@@ -2,41 +2,61 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Item from './item';
 
-const data = {
-  iPhone: [
-    { title: 'iPhone11', money: '5999' },
-    { title: 'iPhoneXS', money: '5399' },
-    { title: 'iPhoneSE', money: '3599' },
-  ],
-  huawei: [
-    { title: 'HUAWEI P40 Pro+', money: '7999' },
-    { title: 'HUAWEI Mate 30', money: '5000' },
-    { title: 'HUAWEI nova 7', money: '4000' },
-  ],
-};
-
 export default class Content extends Component {
+  state = {
+    data: {
+      iPhone: [],
+      huawei: [],
+    },
+  };
+  tranData = (reception) => {
+    const mobileData = {
+      iPhone: [],
+      huawei: [],
+    };
+    reception.forEach((item) => {
+      if (item.category === 'iPhone') {
+        mobileData.iPhone.push(item);
+      } else {
+        mobileData.huawei.push(item);
+      }
+    });
+    this.setState({
+      data: mobileData,
+    });
+  };
+
+  componentDidMount = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/products');
+      const reception = await response.json();
+      this.tranData(reception);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   render() {
     return (
       <div className="myContent">
         <div className="myTitle">iPhone</div>
         <div className="arow">
-          {data.iPhone.map((res) => (
+          {this.state.data.iPhone.map((res) => (
             <Item
-              title={res.title}
-              money={res.money}
-              key={res.money}
+              title={res.name}
+              money={res.price}
+              key={res.price}
               cartAdd={this.props.cartAdd}
             />
           ))}
         </div>
         <div className="myTitle">HUAWEI</div>
         <div className="arow">
-          {data.huawei.map((res) => (
+          {this.state.data.huawei.map((res) => (
             <Item
-              title={res.title}
-              money={res.money}
-              key={res.money}
+              title={res.name}
+              money={res.price}
+              key={res.price}
               cartAdd={this.props.cartAdd}
             />
           ))}
