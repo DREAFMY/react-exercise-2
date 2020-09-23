@@ -7,10 +7,15 @@ export default class Item extends Component {
     return (
       <div className="card cardOne">
         <div className="cardTitle">{this.props.title}</div>
-        <img src={imgUrl} className="card-img-top" />
+        <img src={imgUrl} alt="svgImg" className="card-img-top" />
         <div className="card-body myBottom">
           <span className="money">￥{this.props.money}</span>
-          <button className="btn btn-primary addBtn">add to cart</button>
+          <button
+            className="btn btn-primary addBtn"
+            onClick={this.props.cartAdd}
+          >
+            add to cart
+          </button>
         </div>
       </div>
     );
@@ -20,4 +25,5 @@ export default class Item extends Component {
 Item.propTypes = {
   title: PropTypes.string,
   money: PropTypes.string,
+  cartAdd: PropTypes.func,
 };

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Item from './item';
 
 const data = {
@@ -21,16 +22,30 @@ export default class Content extends Component {
         <div className="myTitle">iPhone</div>
         <div className="arow">
           {data.iPhone.map((res) => (
-            <Item title={res.title} money={res.money} key={res.money} />
+            <Item
+              title={res.title}
+              money={res.money}
+              key={res.money}
+              cartAdd={this.props.cartAdd}
+            />
           ))}
         </div>
         <div className="myTitle">HUAWEI</div>
         <div className="arow">
           {data.huawei.map((res) => (
-            <Item title={res.title} money={res.money} key={res.money} />
+            <Item
+              title={res.title}
+              money={res.money}
+              key={res.money}
+              cartAdd={this.props.cartAdd}
+            />
           ))}
         </div>
       </div>
     );
   }
 }
+
+Content.propTypes = {
+  cartAdd: PropTypes.func,
+};
